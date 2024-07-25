@@ -15,6 +15,7 @@ import images from '~/assets/images';
 import PopperWrapper from '~/components/Popper/Wrapper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -81,9 +82,27 @@ function Header() {
                     <Button primary icon={faSignIn}>
                         Log in
                     </Button>
-                    <button>
-                        <FontAwesomeIcon className={cx("icon")} icon={faEllipsisVertical} />
-                    </button>
+
+                    <Tippy
+                        // visible
+                        delay={[0, 700]}
+                        interactive
+                        appendTo={document.body}
+                        placement="bottom-end"
+                        render={(attrs) => {
+                            return (
+                                <div className={cx('menu')} tabIndex="-1" {...attrs}>
+                                    <PopperWrapper>
+                                        <Menu></Menu>
+                                    </PopperWrapper>
+                                </div>
+                            );
+                        }}
+                    >
+                        <button className={cx('icon-more')}>
+                            <FontAwesomeIcon className={cx('icon')} icon={faEllipsisVertical} />
+                        </button>
+                    </Tippy>
                 </div>
             </div>
         </header>

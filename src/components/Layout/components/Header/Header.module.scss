@@ -18,7 +18,7 @@
     justify-content: space-between;
     align-items: center;
 }
-.logo{
+.logo {
     width: 332px;
 }
 .search {
@@ -116,13 +116,17 @@
     display: flex;
 }
 
-.icon-more{
+.icon-more {
     background-color: transparent;
     padding: 4px;
     margin-left: 12px;
     cursor: pointer;
 }
-.icon{
+.icon {
     width: 20px;
-    height: 20px;
+    height: 20px; 
+}
+
+.menu {
+    width: 223px;
 }
