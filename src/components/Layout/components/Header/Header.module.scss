@@ -116,6 +116,18 @@
     display: flex;
 }
 
+.action-btn {
+    width: 32px;
+    height: 32px;
+    padding: 3px;
+    background-color: transparent;
+    margin-right: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .icon-more {
     background-color: transparent;
     padding: 4px;
@@ -124,9 +136,18 @@
 }
 .icon {
     width: 20px;
-    height: 20px; 
+    height: 20px;
 }
 
 .menu {
     width: 223px;
+}
+
+.user-avatar {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
 }
