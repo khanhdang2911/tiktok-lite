@@ -2,9 +2,8 @@ const MessageIcon = () => {
     return (
         <svg
             className="message"
-            width="2rem"
-            data-e2e=""
-            height="2rem"
+            width="2.5rem"
+            height="2.5rem"
             viewBox="0 0 48 48"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
@@ -21,9 +20,8 @@ const MessageIcon = () => {
 const InboxIcon = () => {
     return (
         <svg
-            class="inbox"
+            className="inbox"
             width="4rem"
-            data-e2e=""
             height="4rem"
             viewBox="0 0 32 32"
             fill="currentColor"

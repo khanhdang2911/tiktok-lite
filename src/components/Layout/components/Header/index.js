@@ -1,8 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCircleXmark,
-    faSpinner,
-    faMagnifyingGlass,
     faSignIn,
     faEllipsisVertical,
 } from '@fortawesome/free-solid-svg-icons';
@@ -14,11 +11,11 @@ import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import images from '~/assets/images';
 import PopperWrapper from '~/components/Popper/Wrapper';
-import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
 import { MessageIcon, InboxIcon } from '~/components/Icons';
+import Search from '../Search';
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -31,62 +28,27 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="logo" />
                 </div>
-                <TippyHeadless
-                    visible={false}
-                    interactive
-                    appendTo={document.body}
-                    render={(attrs) => {
-                        return (
-                            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                                <PopperWrapper>
-                                    <h4 className={cx('search-title')}>You may like</h4>
-                                    <ul className={cx('all-news')}>
-                                        <li className={cx('news')}>
-                                            <FontAwesomeIcon
-                                                className={cx('icon-search-result')}
-                                                icon={faMagnifyingGlass}
-                                            />
-                                            Lorem new cans diy skhy yut
-                                        </li>
-                                    </ul>
-
-                                    <h4 className={cx('search-title')}>Accounts</h4>
-                                    <AccountItem></AccountItem>
-                                    <AccountItem></AccountItem>
-                                </PopperWrapper>
-                            </div>
-                        );
-                    }}
-                >
-                    <div className={cx('search')}>
-                        <input className={cx('search-input')} placeholder="Search" />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </TippyHeadless>
+                <Search/>
                 <div className={cx('action')}>
+                    <Button text>Upload</Button>
                     {userCurrent ? (
                         <>
                             <Tippy content="Message">
                                 <button className={cx('action-btn')}>
                                     <MessageIcon />
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
 
                             <Tippy content="Inbox">
                                 <button className={cx('action-btn')}>
                                     <InboxIcon />
+                                    <span className={cx('badge')}>123</span>
                                 </button>
                             </Tippy>
                         </>
                     ) : (
                         <>
-                            <Button text>Upload</Button>
                             <Button primary icon={faSignIn}>
                                 Log in
                             </Button>
