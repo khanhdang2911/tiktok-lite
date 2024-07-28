@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import AccountItem from '~/components/AccountItem';
 import TippyHeadless from '@tippyjs/react/headless'; // different import path!
@@ -5,29 +6,37 @@ import PopperWrapper from '~/components/Popper/Wrapper';
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useRef, useState } from 'react';
+import useDebounce from '~/hooks/useDebounce';
+import search from '~/apiServices/searchServices';
 const cx = classNames.bind(styles);
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showResult, setShowResult] = useState(true);
+
+    const debouncedValue = useDebounce(searchValue, 500);
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
-        setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
+
+        const fetchApi = async () => {
+            setLoading(true);
+            try {
+                const respone = await search(debouncedValue);
                 setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
-    }, [searchValue]);
+
+                return respone.data;
+            } catch (error) {
+                console.log('Co loi', error.message);
+            }
+        };
+        fetchApi().then((data) => {
+            setSearchResult(data);
+        });
+    }, [debouncedValue]);
     const inputRef = useRef();
     const handleClear = () => {
         setSearchValue('');
