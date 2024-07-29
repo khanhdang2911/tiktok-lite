@@ -42,6 +42,14 @@ function Search() {
         setSearchValue('');
         inputRef.current.focus();
     };
+
+    const handleChangeInput = (e) => {
+        const value = e.target.value;
+        if (value.startsWith(' ')) {
+            return;
+        }
+        setSearchValue(value);
+    };
     return (
         <TippyHeadless
             visible={showResult && searchResult.length > 0}
@@ -67,9 +75,7 @@ function Search() {
                 <input
                     ref={inputRef}
                     value={searchValue}
-                    onChange={(e) => {
-                        setSearchValue(e.target.value);
-                    }}
+                    onChange={handleChangeInput}
                     className={cx('search-input')}
                     placeholder="Search"
                     onFocus={() => {

@@ -1,21 +1,18 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faSignIn,
-    faEllipsisVertical,
-} from '@fortawesome/free-solid-svg-icons';
-import TippyHeadless from '@tippyjs/react/headless'; // different import path!
+import { Link } from 'react-router-dom';
+import { faSignIn, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
+import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from './Header.module.scss';
-import classNames from 'classnames/bind';
 import images from '~/assets/images';
-import PopperWrapper from '~/components/Popper/Wrapper';
 import Button from '~/components/Button';
-import Menu from '~/components/Popper/Menu';
-import Image from '~/components/Image';
 import { MessageIcon, InboxIcon } from '~/components/Icons';
 import Search from '../Search';
+import routes from '~/config/routes';
+import Menu from '~/components/Popper/Menu';
+import Image from '~/components/Image';
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -26,9 +23,11 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="logo" />
+                    <Link to={routes.home} className={cx('logo-link')}>
+                        <img src={images.logo} alt="logo" />
+                    </Link>
                 </div>
-                <Search/>
+                <Search />
                 <div className={cx('action')}>
                     <Button text>Upload</Button>
                     {userCurrent ? (
@@ -55,29 +54,7 @@ function Header() {
                         </>
                     )}
 
-                    <TippyHeadless
-                        // visible
-                        delay={[0, 700]}
-                        offset={[12, 10]}
-                        interactive
-                        appendTo={document.body}
-                        placement="bottom-end"
-                        render={(attrs) => {
-                            return (
-                                <div className={cx('menu')} tabIndex="-1" {...attrs}>
-                                    <PopperWrapper>
-                                        {userCurrent ? (
-                                            <>
-                                                <Menu isAuthen={true}></Menu>
-                                            </>
-                                        ) : (
-                                            <Menu></Menu>
-                                        )}
-                                    </PopperWrapper>
-                                </div>
-                            );
-                        }}
-                    >
+                    <Menu isAuthen={true}>
                         {userCurrent ? (
                             <Image
                                 src=""
@@ -90,7 +67,7 @@ function Header() {
                                 <FontAwesomeIcon className={cx('icon')} icon={faEllipsisVertical} />
                             </button>
                         )}
-                    </TippyHeadless>
+                    </Menu>
                 </div>
             </div>
         </header>

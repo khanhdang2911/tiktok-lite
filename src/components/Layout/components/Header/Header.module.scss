@@ -4,12 +4,14 @@
     --search-high-spacer: 9px;
     --search-btn-width: 52px;
     --btn-clear-color: #a7a7ab;
-
+    position: fixed;
+    z-index: 10;
     width: 1358px;
     height: 60px;
     display: flex;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
+    background-color: white;
 }
 .inner {
     height: 100%;
@@ -20,6 +22,10 @@
 }
 .logo {
     width: 200px;
+}
+.logo-link {
+    display: flex;
+    align-items: center;
 }
 //search
 //----
@@ -42,7 +48,7 @@
     align-items: center;
     position: relative;
 }
-.badge{
+.badge {
     position: absolute;
     min-width: 20px;
     height: 20px;
@@ -69,9 +75,7 @@
     height: 20px;
 }
 
-.menu {
-    width: 223px;
-}
+
 
 .user-avatar {
     display: inline-block;

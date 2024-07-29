@@ -15,6 +15,8 @@
     input {
         flex: 1;
         font-size: 1.6rem;
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.5;
         caret-color: red;
         background-color: transparent;
         color: rgb(83, 82, 82);
@@ -31,6 +33,12 @@
         right: var(--search-btn-width);
         top: 50%;
         transform: translateY(-50%);
+    }
+    &:hover  {
+        .search-btn{
+            color: rgba(22, 24, 35, 0.75);
+        }
+        border: 1px solid rgb(205, 208, 211);
     }
 }
 

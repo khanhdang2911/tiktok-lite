@@ -5,29 +5,31 @@ import Following from '~/pages/Following';
 import Profile from '~/pages/Profile';
 import Search from '~/pages/Search';
 import HeaderOnly from '~/components/Layout/HeaderOnly';
+
+import routes from '~/config/routes';
 const publicRoutes = [
     {
-        path: '/upload',
+        path: routes.upload,
         component: Upload,
-        layout: HeaderOnly
+        layout: HeaderOnly,
     },
     {
-        path: '/',
+        path: routes.home,
         component: Home,
     },
     {
-        path: '/following',
+        path: routes.following,
         component: Following,
     },
     {
-        path: '/profile',
+        path: routes.profile,
         component: Profile,
-        layout:null
+        layout: null,
     },
     {
-        path: '/search',
+        path: routes.search,
         component: Search,
     },
 ];
-const privateRoutes=[];
-export {publicRoutes,privateRoutes};
+const privateRoutes = [];
+export { publicRoutes, privateRoutes };
