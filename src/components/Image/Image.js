@@ -9,4 +9,5 @@ function Image({ src, alt, fallback: customFallback = images.avatar, ...props },
     };
     return <img {...props} src={fallback || src} alt={alt} ref={ref} onError={handleError} />;
 }
+
 export default forwardRef(Image);
