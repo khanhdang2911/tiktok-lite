@@ -10,7 +10,6 @@ function useDebounce(value, delay) {
         return () => clearTimeout(handler);
     });
 
-    console.log('vao day');
     return debouncedValue;
 }
 

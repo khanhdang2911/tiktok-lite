@@ -10,7 +10,7 @@ import images from '~/assets/images';
 import Button from '~/components/Button';
 import { MessageIcon, InboxIcon } from '~/components/Icons';
 import Search from '../Search';
-import routes from '~/config/routes';
+import config from '~/config';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
 const cx = classNames.bind(styles);
@@ -23,14 +23,14 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <Link to={routes.home} className={cx('logo-link')}>
+                    <Link to={config.routes.home} className={cx('logo-link')}>
                         <img src={images.logo} alt="logo" />
                     </Link>
                 </div>
                 <Search />
                 <div className={cx('action')}>
                     <Button text>Upload</Button>
-                    {userCurrent ? (
+                    {false ? (
                         <>
                             <Tippy content="Message">
                                 <button className={cx('action-btn')}>
@@ -48,7 +48,7 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button primary icon={faSignIn}>
+                            <Button primary to="/login" icon={faSignIn}>
                                 Log in
                             </Button>
                         </>
