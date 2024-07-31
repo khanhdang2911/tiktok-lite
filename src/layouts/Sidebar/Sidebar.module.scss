@@ -1,0 +1,38 @@
+.wrapper {
+    position: fixed;
+    width: 240px;
+    overflow-y: overlay;
+    overscroll-behavior: contain;
+    max-height: 600px;
+}
+
+.account-list {
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        width: 97%;
+        height: 1px;
+        background-color: rgb(219, 217, 217);
+        top: 0;
+        right: 0;
+    }
+}
+
+.title {
+    padding: 10px 8px;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: rgba(22, 24, 35, 0.75);
+}
+
+.btn-see-more {
+    margin: 8px;
+    color: var(--primary);
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    cursor: pointer;
+}
